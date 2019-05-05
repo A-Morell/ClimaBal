@@ -1,0 +1,31 @@
+---
+title: "Climatology Interpolation"
+author: "Antonio Morell Bennasser"
+date: "`r format(Sys.Date(), '%e de %B, %Y')`"
+output:
+  html_notebook:
+    toc: yes
+header-includes:
+  - \usepackage[spanish]{babel}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, comment = NULL, warning = FALSE,
+                      message = FALSE, cache = TRUE)
+options(width = 90)
+```
+
+```{r packages, message=FALSE, echo=FALSE, warning=FALSE, cache=TRUE}
+libraries <- c("knitr", "here", "tidyverse", "climatol")
+check.libraries <- is.element(libraries, installed.packages()[, 1]) == FALSE
+libraries.to.install <- libraries[check.libraries]
+if (length(libraries.to.install != 0)) {
+  install.packages(libraries.to.install, dep = TRUE,
+                   repos = "https://cloud.r-project.org")
+}
+
+success <- sapply(libraries, require, quietly = FALSE,  character.only = TRUE)
+if(length(success) != length(libraries))
+  {stop("A package failed to return a success in require() function.")}
+```
+
